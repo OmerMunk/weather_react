@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import {WrappedLoginScreen} from './LoginScreen';
+import {Routes, Route} from "react-router-dom";
+import {Dashboard} from "./Dashboard";
+import {Subscriptions} from './Subscriptions';
+import {Container} from 'react-bootstrap';
+import {UserProfile} from "./UserProfile";
+import {Header} from "./Header";
+
+
+class App extends React.Component {
+
+
+    render() {
+        return (
+            <Container>
+                <Header/>
+                <Routes>
+                    <Route path="/dashboard" element={<Dashboard/>}/>
+                    <Route path="/subscriptions" element={<Subscriptions/>}/>
+                    <Route path="/login" element={<WrappedLoginScreen/>}/>
+                    <Route path="/userprofile" element={<UserProfile/>}/>
+                    <Route path="/" element={<Dashboard/>}/>
+                </Routes>
+            </Container>
+        )
+    }
+
 }
 
 export default App;
